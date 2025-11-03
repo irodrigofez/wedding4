@@ -1,175 +1,179 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Open+Sans:wght@400;600&family=Lora:wght@400;500&display=swap');
 
 body {
-    margin: 0;
-    font-family: 'Georgia', serif;
-    color: #0e1a33; /* texto más oscuro y limpio */
-    overflow: hidden;
+  margin: 0;
+  font-family: 'Georgia', serif;
+  color: #0e1a33;
+  overflow: hidden;
 }
 
 /* -------------------- PANTALLA DE BIENVENIDA -------------------- */
 .welcome-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('fondo.png'); /* imagen con el marco */
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-color: #375b94; /* tono azul profundo detrás del marco */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    transition: opacity 1s ease-in-out;
-    z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('fondo.png'); /* tu imagen de fondo */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain; /* mantiene todo el marco visible */
+  background-color: #375b94; /* azul profundo de relleno */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  transition: opacity 1s ease-in-out;
+  z-index: 1000;
 }
 
 .welcome-screen.hidden {
-    opacity: 0;
-    pointer-events: none;
+  opacity: 0;
+  pointer-events: none;
 }
 
+/* -------------------- CONTENIDO CENTRAL -------------------- */
 .content {
-    padding: 20px;
-    max-width: 90%;
+  position: relative;
+  width: 90%;
+  max-width: 700px;
+  padding: 0 20px;
+  text-align: center;
+  top: -2vh; /* ligera subida en pantalla */
 }
 
 /* -------------------- TEXTOS -------------------- */
 .tagline {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 1.1em;
-    letter-spacing: 3px;
-    margin-bottom: 10px;
-    color: #7d93c2; /* azul suave */
-    text-transform: uppercase;
-    font-weight: 600;
+  font-family: 'Open Sans', sans-serif;
+  font-size: clamp(0.9em, 2vw, 1.2em);
+  letter-spacing: 3px;
+  color: #7d93c2;
+  margin-bottom: 0.8em;
+  text-transform: uppercase;
 }
 
 .names {
-    font-family: 'Playfair Display', serif;
-    font-size: 3.5em;
-    margin: 0 0 20px 0;
-    line-height: 1.1;
-    color: #0e1a33; /* azul muy oscuro */
-    text-shadow: 0 0 10px rgba(255,255,255,0.4);
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2em, 6vw, 3.5em);
+  line-height: 1.1;
+  color: #0e1a33;
+  text-shadow: 0 0 10px rgba(255,255,255,0.4);
+  margin: 0 0 0.6em 0;
 }
 
 .invitation-text {
-    font-family: 'Lora', serif;
-    font-size: 1.2em;
-    margin-bottom: 50px;
-    color: #213b66;
+  font-family: 'Lora', serif;
+  font-size: clamp(1em, 3vw, 1.3em);
+  color: #213b66;
+  margin-bottom: 2.5em;
 }
 
-/* -------------------- BOTÓN / FLECHA -------------------- */
+/* -------------------- BOTÓN “TOCA PARA REVELAR” -------------------- */
 .reveal-button {
-    width: 90px;
-    height: 90px;
-    border: 2px solid rgba(255,255,255,0.9);
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 30px auto 10px auto;
-    cursor: pointer;
-    background: radial-gradient(circle at center, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
-    box-shadow: 0 0 20px rgba(255,255,255,0.2);
-    animation: pulseGlow 3s infinite ease-in-out;
-    transition: all 0.3s ease;
+  width: clamp(70px, 10vw, 90px);
+  height: clamp(70px, 10vw, 90px);
+  border: 2px solid rgba(255,255,255,0.9);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 15px auto;
+  cursor: pointer;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+  box-shadow: 0 0 20px rgba(255,255,255,0.2);
+  animation: pulseGlow 3s infinite ease-in-out;
+  transition: all 0.3s ease;
 }
 
 .reveal-button:hover {
-    transform: scale(1.08);
-    box-shadow: 0 0 30px rgba(255,255,255,0.4);
+  transform: scale(1.08);
+  box-shadow: 0 0 30px rgba(255,255,255,0.4);
 }
 
 /* Flecha dentro del botón */
 .reveal-button i {
-    font-size: 2.4em;
-    color: rgba(255,255,255,0.85);
-    text-shadow: 0 0 10px rgba(255,255,255,0.6);
-    animation: arrowBounce 2.2s infinite ease-in-out;
+  font-size: clamp(1.8em, 4vw, 2.5em);
+  color: rgba(255,255,255,0.9);
+  text-shadow: 0 0 8px rgba(255,255,255,0.6);
+  animation: arrowBounce 2s infinite ease-in-out;
 }
 
-/* Texto debajo del botón */
+/* Texto “Toca para Revelar” */
 .action-text {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 1em;
-    color: rgba(255,255,255,0.85);
-    margin-top: 12px;
-    letter-spacing: 1px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: clamp(0.9em, 2.5vw, 1.1em);
+  color: rgba(255,255,255,0.9);
+  letter-spacing: 1px;
+  margin-top: 8px;
 }
 
 /* -------------------- ANIMACIONES -------------------- */
 @keyframes pulseGlow {
-    0%, 100% {
-        box-shadow: 0 0 15px rgba(255,255,255,0.15);
-        border-color: rgba(255,255,255,0.8);
-    }
-    50% {
-        box-shadow: 0 0 30px rgba(255,255,255,0.5);
-        border-color: rgba(255,255,255,1);
-    }
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(255,255,255,0.2);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(255,255,255,0.5);
+  }
 }
 
 @keyframes arrowBounce {
-    0%, 100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    50% {
-        opacity: 0.8;
-        transform: translateY(7px);
-    }
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(6px);
+    opacity: 0.85;
+  }
 }
 
-/* -------------------- CONTENIDO PRINCIPAL (OCULTO) -------------------- */
+/* -------------------- CONTENIDO PRINCIPAL -------------------- */
 .main-content {
-    padding: 40px;
-    text-align: center;
-    background-color: #f8f9fc;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transition: opacity 1s ease-in-out;
+  padding: 40px;
+  text-align: center;
+  background-color: #f8f9fc;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 1s ease-in-out;
 }
 
 .main-content.hidden {
-    display: none;
-    opacity: 0;
+  display: none;
+  opacity: 0;
 }
 
 .main-content h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.5em;
-    color: #0e1a33;
-    margin-bottom: 20px;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5em;
+  color: #0e1a33;
+  margin-bottom: 20px;
 }
 
 .main-content p {
-    font-family: 'Lora', serif;
-    font-size: 1.1em;
-    color: #213b66;
-    max-width: 600px;
-    line-height: 1.6;
+  font-family: 'Lora', serif;
+  font-size: 1.1em;
+  color: #213b66;
+  max-width: 600px;
+  line-height: 1.6;
 }
 
 /* -------------------- RESPONSIVE -------------------- */
 @media (max-width: 768px) {
-    .names { font-size: 2.7em; }
-    .invitation-text { font-size: 1.1em; }
-    .reveal-button { width: 75px; height: 75px; }
-    .reveal-button i { font-size: 2.1em; }
-    .action-text { font-size: 0.95em; }
+  .content {
+    top: -3vh;
+  }
 }
 
 @media (max-width: 480px) {
-    .names { font-size: 2.2em; }
-    .tagline { font-size: 0.95em; letter-spacing: 2px; }
-    .invitation-text { font-size: 1em; }
+  .content {
+    top: -5vh;
+  }
+  .invitation-text {
+    margin-bottom: 2em;
+  }
 }
